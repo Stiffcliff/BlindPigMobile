@@ -1,0 +1,15 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+path="res://.import/gangster (1).png-5bcdd269511bdb1b84cbd27354289440.res"
+
+[deps]
+
+source_file="res://Assets/Graphics/gangster (1).png"
+dest_files=[ "res://.import/gangster (1).png-5bcdd269511bdb1b84cbd27354289440.res" ]
+
+[params]
+
+create_from=0
+threshold=0.5
