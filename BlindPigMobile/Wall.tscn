@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Assets/Wall.png" type="Texture" id=1]
+
+[node name="Wall" type="Sprite"]
+position = Vector2( 70.0911, 130.116 )
+scale = Vector2( 0.338321, 0.682772 )
+texture = ExtResource( 1 )

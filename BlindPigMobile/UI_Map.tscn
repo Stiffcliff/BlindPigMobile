@@ -1,0 +1,365 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://UI_Map.gd" type="Script" id=1]
+[ext_resource path="res://Wall.tscn" type="PackedScene" id=2]
+[ext_resource path="res://PanelBackground.tscn" type="PackedScene" id=3]
+[ext_resource path="res://FadeAnimation2.tres" type="Animation" id=4]
+[ext_resource path="res://InventoryPanel.tscn" type="PackedScene" id=5]
+[ext_resource path="res://FADE4.tres" type="Animation" id=6]
+[ext_resource path="res://StatsPanel.tscn" type="PackedScene" id=7]
+[ext_resource path="res://TextPanel.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Assets/Manhattan3.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Manhattan4.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Player.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Manhattan1.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Manhattan2.png" type="Texture" id=13]
+
+[sub_resource type="Animation" id=1]
+resource_name = "DealDmg"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 32.4934, 66.0349 ), Vector2( 26.4934, 66.0349 ), Vector2( 39.4934, 66.0349 ), Vector2( 32.493, 66.035 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Player:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 0.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "IDLE"
+length = 1.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.8, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 32.4934, 66.0349 ), Vector2( 32.4934, 65.0349 ), Vector2( 32.4934, 66.0349 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Player:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.8, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "IDLE2"
+length = 1.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.8, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 32.4934, 55.0349 ), Vector2( 32.493, 54.03 ), Vector2( 32.493, 55.03 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Player:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.8, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "IDLE3"
+length = 1.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 32.4934, 54.0349 ), Vector2( 32.4934, 53.0349 ), Vector2( 32.4934, 54.0349 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Player:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.7, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 32.4934, 66.0349 ), Vector2( 38.4934, 66.0349 ), Vector2( 34.4934, 66.0349 ), Vector2( 31.4934, 66.0349 ), Vector2( 32.493, 66.035 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Player:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 0.0, 0.0, 0.0 ]
+}
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ ExtResource( 9 ), ExtResource( 13 ), ExtResource( 10 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "default",
+"speed": 1.0
+} ]
+
+[node name="UIMap" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Wall" parent="." instance=ExtResource( 2 )]
+
+[node name="MainPanel" parent="." instance=ExtResource( 3 )]
+
+[node name="GraphicsPanel" type="Panel" parent="."]
+margin_left = 10.0
+margin_top = 12.0
+margin_right = 134.0
+margin_bottom = 82.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerAnimator" type="AnimationPlayer" parent="GraphicsPanel"]
+anims/DealDmg = SubResource( 1 )
+anims/IDLE = SubResource( 2 )
+anims/IDLE2 = SubResource( 3 )
+anims/IDLE3 = SubResource( 4 )
+anims/RecDmg = SubResource( 5 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="GraphicsPanel"]
+position = Vector2( 61.9524, 35.0001 )
+frames = SubResource( 6 )
+
+[node name="Player" type="Sprite" parent="GraphicsPanel"]
+position = Vector2( 32.4934, 54.0349 )
+texture = ExtResource( 11 )
+
+[node name="TextPanel" parent="." instance=ExtResource( 8 )]
+
+[node name="StatsPanel" parent="." instance=ExtResource( 7 )]
+
+[node name="ButtonContainer" type="GridContainer" parent="."]
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 10.0
+margin_top = 115.0
+margin_right = 70.0
+margin_bottom = 92.5
+custom_constants/vseparation = 12
+custom_constants/hseparation = 14
+columns = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button1" type="Button" parent="ButtonContainer"]
+margin_right = 55.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 55, 25 )
+text = "Little Italy"
+
+[node name="Button2" type="Button" parent="ButtonContainer"]
+margin_left = 69.0
+margin_right = 124.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 55, 25 )
+text = "Up. East Side"
+clip_text = true
+
+[node name="Button3" type="Button" parent="ButtonContainer"]
+margin_top = 37.0
+margin_right = 55.0
+margin_bottom = 62.0
+rect_min_size = Vector2( 55, 25 )
+text = "Lo. East Side"
+clip_text = true
+
+[node name="Button4" type="Button" parent="ButtonContainer"]
+margin_left = 69.0
+margin_top = 37.0
+margin_right = 124.0
+margin_bottom = 62.0
+rect_min_size = Vector2( 55, 25 )
+text = "Harlem"
+clip_text = true
+
+[node name="Button5" type="Button" parent="ButtonContainer"]
+margin_top = 74.0
+margin_right = 55.0
+margin_bottom = 99.0
+rect_min_size = Vector2( 55, 25 )
+text = "Inventory"
+
+[node name="Button6" type="Button" parent="ButtonContainer"]
+margin_left = 69.0
+margin_top = 74.0
+margin_right = 124.0
+margin_bottom = 99.0
+rect_min_size = Vector2( 55, 25 )
+text = "Menu"
+
+[node name="Panel" type="Panel" parent="."]
+margin_left = 50.0
+margin_top = 14.0
+margin_right = 94.0
+margin_bottom = 23.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="restoredPnl" type="Panel" parent="."]
+visible = false
+margin_left = 31.0
+margin_top = 31.0
+margin_right = 113.0
+margin_bottom = 65.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="restoredPnl"]
+margin_left = -1.0
+margin_top = -1.0
+margin_right = 82.0
+margin_bottom = 32.0
+text = "You died.
+
+half total HP
+restored."
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EndGPnl" type="Panel" parent="."]
+visible = false
+margin_left = 31.0
+margin_top = 31.0
+margin_right = 113.0
+margin_bottom = 70.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="EndGPnl"]
+margin_left = -1.0
+margin_top = -1.0
+margin_right = 82.0
+margin_bottom = 32.0
+text = "GODFATHER SIGHTED.
+
+Your next fight will
+be against the 
+GODFATHER"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+margin_left = 10.0
+margin_top = 12.0
+margin_right = 135.0
+margin_bottom = 24.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CenterContainer"]
+margin_left = 39.0
+margin_right = 86.0
+margin_bottom = 12.0
+text = "Manhattan"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/FADE4 = ExtResource( 6 )
+anims/FadeAnimation = ExtResource( 4 )
+
+[node name="ColorRect" type="ColorRect" parent="AnimationPlayer"]
+modulate = Color( 0, 0, 0, 0 )
+anchor_top = -0.00164238
+anchor_right = 1.0
+anchor_bottom = 0.998358
+margin_left = -1.12724
+margin_right = -1.12724
+mouse_filter = 2
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InventoryPanel" parent="." instance=ExtResource( 5 )]
+visible = false
+[connection signal="pressed" from="ButtonContainer/Button1" to="." method="_on_Button1_pressed"]
+[connection signal="pressed" from="ButtonContainer/Button2" to="." method="_on_Button2_pressed"]
+[connection signal="pressed" from="ButtonContainer/Button3" to="." method="_on_Button3_pressed"]
+[connection signal="pressed" from="ButtonContainer/Button4" to="." method="_on_Button4_pressed"]
+[connection signal="pressed" from="ButtonContainer/Button5" to="." method="_on_Button5_pressed"]
+[connection signal="pressed" from="ButtonContainer/Button6" to="." method="_on_Button6_pressed"]

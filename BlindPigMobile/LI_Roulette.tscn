@@ -1,0 +1,369 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Wall.tscn" type="PackedScene" id=1]
+[ext_resource path="res://PanelBackground.tscn" type="PackedScene" id=2]
+[ext_resource path="res://InventoryPanel.tscn" type="PackedScene" id=3]
+[ext_resource path="res://StatsPanel.tscn" type="PackedScene" id=4]
+[ext_resource path="res://LI_Roulette.gd" type="Script" id=6]
+
+[sub_resource type="Animation" id=1]
+resource_name = "FADE6"
+length = 0.6
+step = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimationPlayer/ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+
+[node name="LI_Roulette" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Wall" parent="." instance=ExtResource( 1 )]
+
+[node name="Panel" parent="." instance=ExtResource( 2 )]
+
+[node name="StatsPanel" parent="." instance=ExtResource( 4 )]
+
+[node name="TextPanel" type="Panel" parent="."]
+margin_top = 216.0
+margin_right = 144.0
+margin_bottom = 256.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TextPanel"]
+margin_left = 1.12372
+margin_top = 0.749146
+margin_right = 131.124
+margin_bottom = 31.7491
+text = "Try your luck at the table."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BottomButtons1" type="GridContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -62.5
+margin_top = 60.5
+margin_right = 62.5
+margin_bottom = 85.5
+custom_constants/vseparation = 12
+custom_constants/hseparation = 14
+columns = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button5" type="Button" parent="BottomButtons1"]
+margin_right = 55.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 55, 25 )
+text = "Inventory"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button6" type="Button" parent="BottomButtons1"]
+margin_left = 69.0
+margin_right = 124.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 55, 25 )
+text = "Back"
+
+[node name="GraphicsPanel" type="Panel" parent="."]
+margin_left = 10.0
+margin_top = 12.0
+margin_right = 134.0
+margin_bottom = 82.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GraphicsPanel"]
+margin_left = 4.0
+margin_top = 17.0
+margin_right = 44.0
+margin_bottom = 57.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WagerLbl" type="Label" parent="GraphicsPanel/VBoxContainer"]
+margin_right = 40.0
+margin_bottom = 12.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ReturnsLbl" type="Label" parent="GraphicsPanel/VBoxContainer"]
+margin_top = 16.0
+margin_right = 40.0
+margin_bottom = 28.0
+
+[node name="ChoiceLbl" type="Label" parent="GraphicsPanel/VBoxContainer"]
+margin_top = 32.0
+margin_right = 40.0
+margin_bottom = 44.0
+
+[node name="RouletteChoiceContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -46.0
+margin_top = -8.0
+margin_right = 47.0
+margin_bottom = 54.0
+custom_constants/separation = 8
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RedBlackBtn" type="Button" parent="RouletteChoiceContainer"]
+margin_right = 93.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 0, 15 )
+text = "Red or Black"
+
+[node name="GroupBtn" type="Button" parent="RouletteChoiceContainer"]
+margin_top = 23.0
+margin_right = 93.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 0, 15 )
+text = "Number Group"
+
+[node name="SingleNumberBtn" type="Button" parent="RouletteChoiceContainer"]
+margin_top = 46.0
+margin_right = 93.0
+margin_bottom = 61.0
+rect_min_size = Vector2( 0, 15 )
+text = "Single Number"
+
+[node name="WagerChoiceBox" type="VBoxContainer" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -46.0
+margin_top = -8.0
+margin_right = 47.0
+margin_bottom = 54.0
+custom_constants/separation = 8
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="IncreaseWagerBtn" type="Button" parent="WagerChoiceBox"]
+margin_right = 93.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 0, 15 )
+text = "Increase Wager"
+
+[node name="DecreaseWagerBtn" type="Button" parent="WagerChoiceBox"]
+margin_top = 23.0
+margin_right = 93.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 0, 15 )
+text = "Decrease Wager"
+
+[node name="ContinueBtn" type="Button" parent="WagerChoiceBox"]
+margin_top = 46.0
+margin_right = 93.0
+margin_bottom = 61.0
+rect_min_size = Vector2( 0, 15 )
+text = "Confirm"
+
+[node name="Choice2Box" type="VBoxContainer" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -46.0
+margin_top = -8.0
+margin_right = 47.0
+margin_bottom = 54.0
+custom_constants/separation = 8
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RedBtn" type="Button" parent="Choice2Box"]
+margin_right = 93.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 0, 15 )
+text = "Red"
+
+[node name="BlackBtn" type="Button" parent="Choice2Box"]
+margin_top = 23.0
+margin_right = 93.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 0, 15 )
+text = "Black"
+
+[node name="Confirm2Btn" type="Button" parent="Choice2Box"]
+margin_top = 46.0
+margin_right = 93.0
+margin_bottom = 61.0
+rect_min_size = Vector2( 0, 15 )
+text = "Confirm"
+
+[node name="Choice3Box" type="VBoxContainer" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -47.0
+margin_top = -14.0
+margin_right = 47.0
+margin_bottom = 58.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Region1Btn" type="Button" parent="Choice3Box"]
+margin_right = 94.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 0, 15 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "1-12"
+
+[node name="Region2Btn" type="Button" parent="Choice3Box"]
+margin_top = 19.0
+margin_right = 94.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 0, 15 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "13-24"
+
+[node name="Region3Btn" type="Button" parent="Choice3Box"]
+margin_top = 38.0
+margin_right = 94.0
+margin_bottom = 53.0
+rect_min_size = Vector2( 0, 15 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "25-36"
+
+[node name="Confirm2Btn" type="Button" parent="Choice3Box"]
+margin_top = 57.0
+margin_right = 94.0
+margin_bottom = 72.0
+rect_min_size = Vector2( 0, 15 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Confirm"
+
+[node name="Choice4Box" type="VBoxContainer" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -47.0
+margin_top = -14.0
+margin_right = 47.0
+margin_bottom = 58.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="IncreaseBtn" type="Button" parent="Choice4Box"]
+margin_right = 94.0
+margin_bottom = 21.0
+rect_min_size = Vector2( 0, 15 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Increase Number"
+
+[node name="DecreaseBtn" type="Button" parent="Choice4Box"]
+margin_top = 25.0
+margin_right = 94.0
+margin_bottom = 46.0
+rect_min_size = Vector2( 0, 15 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Decrease Number"
+
+[node name="Confirm2Btn" type="Button" parent="Choice4Box"]
+margin_top = 50.0
+margin_right = 94.0
+margin_bottom = 72.0
+rect_min_size = Vector2( 0, 15 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Confirm"
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+margin_left = 9.0
+margin_top = 11.0
+margin_right = 135.0
+margin_bottom = 23.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CenterContainer"]
+margin_left = 41.0
+margin_right = 85.0
+margin_bottom = 12.0
+text = "The Table"
+
+[node name="InventoryPanel" parent="." instance=ExtResource( 3 )]
+visible = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/FADE6 = SubResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="AnimationPlayer"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="BottomButtons1/Button5" to="." method="_on_Button5_pressed"]
+[connection signal="pressed" from="BottomButtons1/Button6" to="." method="_on_Button6_pressed"]
+[connection signal="pressed" from="RouletteChoiceContainer/RedBlackBtn" to="." method="_on_RedBlackBtn_pressed"]
+[connection signal="pressed" from="RouletteChoiceContainer/GroupBtn" to="." method="_on_GroupBtn_pressed"]
+[connection signal="pressed" from="RouletteChoiceContainer/SingleNumberBtn" to="." method="_on_SingleNumberBtn_pressed"]
+[connection signal="pressed" from="WagerChoiceBox/IncreaseWagerBtn" to="." method="_on_IncreaseWagerBtn_pressed"]
+[connection signal="pressed" from="WagerChoiceBox/DecreaseWagerBtn" to="." method="_on_DecreaseWagerBtn_pressed"]
+[connection signal="pressed" from="WagerChoiceBox/ContinueBtn" to="." method="_on_ContinueBtn_pressed"]
+[connection signal="pressed" from="Choice2Box/RedBtn" to="." method="_on_RedBtn_pressed"]
+[connection signal="pressed" from="Choice2Box/BlackBtn" to="." method="_on_BlackBtn_pressed"]
+[connection signal="pressed" from="Choice2Box/Confirm2Btn" to="." method="_on_Confirm2Btn_pressed"]
+[connection signal="pressed" from="Choice3Box/Region1Btn" to="." method="_on_Region1Btn_pressed"]
+[connection signal="pressed" from="Choice3Box/Region2Btn" to="." method="_on_Region2Btn_pressed"]
+[connection signal="pressed" from="Choice3Box/Region3Btn" to="." method="_on_Region3Btn_pressed"]
+[connection signal="pressed" from="Choice3Box/Confirm2Btn" to="." method="_on_Confirm2Btn_pressed"]
+[connection signal="pressed" from="Choice4Box/IncreaseBtn" to="." method="_on_IncreaseBtn_pressed"]
+[connection signal="pressed" from="Choice4Box/DecreaseBtn" to="." method="_on_DecreaseBtn_pressed"]
+[connection signal="pressed" from="Choice4Box/Confirm2Btn" to="." method="_on_Confirm2Btn_pressed"]

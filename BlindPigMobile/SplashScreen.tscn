@@ -1,0 +1,66 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://SplashScreen.gd" type="Script" id=1]
+[ext_resource path="res://Assets/CrabGang.png" type="Texture" id=3]
+[ext_resource path="res://Assets/crab.png" type="Texture" id=4]
+[ext_resource path="res://Wall.tscn" type="PackedScene" id=5]
+[ext_resource path="res://FadeAnimation2.tres" type="Animation" id=6]
+[ext_resource path="res://FADE1.tres" type="Animation" id=7]
+
+[node name="SplashScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -0.445435
+margin_right = -0.445435
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Wall" parent="Background" instance=ExtResource( 5 )]
+
+[node name="Panel" type="Panel" parent="Background"]
+margin_left = 10.0
+margin_top = 55.0
+margin_right = 136.0
+margin_bottom = 157.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="crab" type="Sprite" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 70.0007, 131.877 )
+scale = Vector2( 0.156456, 0.167555 )
+texture = ExtResource( 4 )
+
+[node name="CrabGang" type="Sprite" parent="."]
+position = Vector2( 72.7576, 83.7138 )
+scale = Vector2( 0.257384, 0.334983 )
+texture = ExtResource( 3 )
+
+[node name="crab2" type="Sprite" parent="."]
+position = Vector2( 68.9033, 131.787 )
+scale = Vector2( 0.151799, 0.165027 )
+texture = ExtResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/FADE1 = ExtResource( 7 )
+anims/FadeAnimation = ExtResource( 6 )
+
+[node name="ColorRect" type="ColorRect" parent="AnimationPlayer"]
+modulate = Color( 0, 0, 0, 0 )
+margin_right = 143.0
+margin_bottom = 256.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

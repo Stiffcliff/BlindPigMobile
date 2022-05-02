@@ -1,0 +1,121 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Wall.tscn" type="PackedScene" id=1]
+[ext_resource path="res://FadeAnimation2.tres" type="Animation" id=2]
+[ext_resource path="res://Assets/Wall.png" type="Texture" id=3]
+[ext_resource path="res://EndGameScreen.gd" type="Script" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "FADE3"
+length = 0.6
+step = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimationPlayer/ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Wall" type="Sprite" parent="Background" instance=ExtResource( 1 )]
+position = Vector2( 70.0911, 130.116 )
+scale = Vector2( 0.338321, 0.682772 )
+texture = ExtResource( 3 )
+
+[node name="Panel" type="Panel" parent="Background"]
+margin_left = 8.0
+margin_top = 10.0
+margin_right = 135.0
+margin_bottom = 247.0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="InfoHolder2" type="CenterContainer" parent="."]
+margin_left = 1.0
+margin_top = 30.0
+margin_right = 144.0
+margin_bottom = 199.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="InfoHolder2"]
+margin_left = 7.0
+margin_top = 12.0
+margin_right = 136.0
+margin_bottom = 157.0
+text = "If you're seeing this it means
+you have won the whole game.
+
+I very much doubt anyone
+will ever see this screen but
+congratulations if you made it.
+
+Thank you for playing my
+game and once again
+i applaud the effort it took
+to make it here.
+
+I don't really have anything
+to offer but really you should
+just feel good about it 
+yourself.
+
+so yeah,
+there you go,
+thanks for playing and that."
+align = 1
+
+[node name="BeginButton" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -34.5
+margin_top = -35.5
+margin_right = 34.5
+margin_bottom = -15.5
+text = "Yay for me"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/FADE3 = SubResource( 1 )
+anims/FadeAnimation = ExtResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="AnimationPlayer"]
+modulate = Color( 0, 0, 0, 0 )
+anchor_left = 0.00347222
+anchor_right = 0.00347222
+margin_right = 143.0
+margin_bottom = 256.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="BeginButton" to="." method="_on_BeginButton_pressed"]

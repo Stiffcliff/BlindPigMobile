@@ -1,0 +1,67 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://No_Save.gd" type="Script" id=1]
+
+[node name="No_Save" type="Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -71.5
+margin_top = -128.0
+margin_right = 71.5
+margin_bottom = 128.0
+mouse_filter = 2
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoadedPanel2" type="Panel" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -57.5
+margin_top = -61.0
+margin_right = 58.5
+margin_bottom = 28.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LoadedPanel2"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -58.0
+margin_top = -18.0
+margin_right = 58.0
+margin_bottom = 18.0
+custom_constants/separation = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FoundLabel" type="Label" parent="LoadedPanel2/VBoxContainer"]
+margin_right = 116.0
+margin_bottom = 12.0
+text = "NO SAVE GAME FOUND"
+align = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="LoadedPanel2/VBoxContainer"]
+margin_top = 18.0
+margin_right = 116.0
+margin_bottom = 33.0
+rect_min_size = Vector2( 0, 15 )
+custom_constants/separation = 10
+alignment = 1
+
+[node name="BackBtn" type="Button" parent="LoadedPanel2/VBoxContainer/HBoxContainer"]
+margin_left = 33.0
+margin_right = 83.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 50, 0 )
+text = "Cancel"
+[connection signal="pressed" from="LoadedPanel2/VBoxContainer/HBoxContainer/BackBtn" to="." method="_on_BackBtn_pressed"]

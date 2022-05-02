@@ -1,0 +1,597 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://PanelBackground.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Wall.tscn" type="PackedScene" id=2]
+[ext_resource path="res://InventoryPanel.tscn" type="PackedScene" id=3]
+[ext_resource path="res://StatsPanel.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Tailor3.png" type="Texture" id=5]
+[ext_resource path="res://LI_Tailor.gd" type="Script" id=6]
+[ext_resource path="res://Assets/Tailor2.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Tailor1.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Tailor4.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Tailor5.png" type="Texture" id=10]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 8 ), ExtResource( 7 ), ExtResource( 5 ), ExtResource( 9 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "Default",
+"speed": 5.0
+} ]
+
+[sub_resource type="ImageTexture" id=2]
+
+[sub_resource type="Animation" id=3]
+length = 0.6
+step = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimationPlayer/ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+
+[node name="LI_Tailor" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Wall" parent="." instance=ExtResource( 2 )]
+
+[node name="Panel" parent="." instance=ExtResource( 1 )]
+
+[node name="StatsPanel" parent="." instance=ExtResource( 4 )]
+
+[node name="TextPanel" type="Panel" parent="."]
+margin_top = 216.0
+margin_right = 144.0
+margin_bottom = 256.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TextPanel"]
+margin_left = 1.12372
+margin_top = 0.749146
+margin_right = 131.124
+margin_bottom = 31.7491
+text = "Looking for some new threads?
+
+I got the best cloth out there."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BottomButtons1" type="GridContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -62.5
+margin_top = 60.5
+margin_right = 62.5
+margin_bottom = 85.5
+custom_constants/vseparation = 12
+custom_constants/hseparation = 14
+columns = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button5" type="Button" parent="BottomButtons1"]
+margin_right = 55.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 55, 25 )
+text = "Inventory"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button6" type="Button" parent="BottomButtons1"]
+margin_left = 69.0
+margin_right = 124.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 55, 25 )
+text = "Back"
+
+[node name="GraphicsPanel" type="Panel" parent="."]
+margin_left = 9.71907
+margin_top = 12.0
+margin_right = 133.719
+margin_bottom = 82.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="GraphicsPanel"]
+position = Vector2( 62.0001, 35.0385 )
+frames = SubResource( 1 )
+animation = "Default"
+
+[node name="ItemPanel" type="Panel" parent="GraphicsPanel"]
+margin_left = 78.0
+margin_top = 14.0
+margin_right = 120.0
+margin_bottom = 50.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemImage" type="TextureRect" parent="GraphicsPanel/ItemPanel"]
+margin_left = 7.5166
+margin_top = 6.83162
+margin_right = 35.5166
+margin_bottom = 28.8316
+rect_min_size = Vector2( 28, 22 )
+texture = SubResource( 2 )
+expand = true
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DescPanel" type="Panel" parent="GraphicsPanel"]
+margin_left = 78.0
+margin_top = 51.0
+margin_right = 120.0
+margin_bottom = 65.0
+
+[node name="EffectPanel" type="Label" parent="GraphicsPanel/DescPanel"]
+margin_left = 1.44744
+margin_top = 1.0
+margin_right = 43.4474
+margin_bottom = 13.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UnknownContainer" type="VBoxContainer" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -52.5
+margin_top = 2.0
+margin_right = 52.5
+margin_bottom = 40.0
+custom_constants/separation = 8
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UHandBtn" type="Button" parent="UnknownContainer"]
+margin_right = 105.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 0, 15 )
+text = "Used Handkerchief - $1"
+
+[node name="CSusBtn" type="Button" parent="UnknownContainer"]
+margin_top = 23.0
+margin_right = 105.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 0, 15 )
+text = "Cheap Suspeders - $2"
+
+[node name="UpcomingContainer" type="VBoxContainer" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -52.5
+margin_top = -7.0
+margin_right = 52.5
+margin_bottom = 54.0
+custom_constants/separation = 8
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OldShirtBtn" type="Button" parent="UpcomingContainer"]
+margin_right = 105.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 0, 15 )
+text = "Old Shirt - $3"
+
+[node name="StreetCapBtn" type="Button" parent="UpcomingContainer"]
+margin_top = 23.0
+margin_right = 105.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 0, 15 )
+text = "Street Cap - $7"
+
+[node name="CheapCaneBtn" type="Button" parent="UpcomingContainer"]
+margin_top = 46.0
+margin_right = 105.0
+margin_bottom = 61.0
+rect_min_size = Vector2( 0, 15 )
+text = "Cheap Cane - $8"
+
+[node name="FelonContainer" type="VBoxContainer" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -52.5
+margin_top = -7.0
+margin_right = 52.5
+margin_bottom = 54.0
+custom_constants/separation = 8
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OSockBtn" type="Button" parent="FelonContainer"]
+margin_right = 105.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 0, 15 )
+text = "Old Sock - $8"
+
+[node name="OWcoatBtn" type="Button" parent="FelonContainer"]
+margin_top = 23.0
+margin_right = 105.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 0, 15 )
+text = "Old Waistcoat - $10"
+
+[node name="OShoeBtn" type="Button" parent="FelonContainer"]
+margin_top = 46.0
+margin_right = 105.0
+margin_bottom = 61.0
+rect_min_size = Vector2( 0, 15 )
+text = "Old Shoes - $12"
+
+[node name="CrewMemberContainer" type="VBoxContainer" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -52.5
+margin_top = -7.0
+margin_right = 52.5
+margin_bottom = 54.0
+custom_constants/separation = 8
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OTieBtn" type="Button" parent="CrewMemberContainer"]
+margin_right = 105.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 0, 15 )
+text = "Old Tie - $12"
+
+[node name="OPantsBtn" type="Button" parent="CrewMemberContainer"]
+margin_top = 23.0
+margin_right = 105.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 0, 15 )
+text = "Old Pants - $13"
+
+[node name="OSJacketBtn" type="Button" parent="CrewMemberContainer"]
+margin_top = 46.0
+margin_right = 105.0
+margin_bottom = 61.0
+rect_min_size = Vector2( 0, 15 )
+text = "Old Suit Jacket - $15"
+
+[node name="AssociateContainer" type="VBoxContainer" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -52.5
+margin_top = -7.0
+margin_right = 52.5
+margin_bottom = 54.0
+custom_constants/separation = 8
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OCoatBtn" type="Button" parent="AssociateContainer"]
+margin_right = 105.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 0, 15 )
+text = "Old Coat - $15"
+
+[node name="SPocketBtn" type="Button" parent="AssociateContainer"]
+margin_top = 23.0
+margin_right = 105.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 0, 15 )
+text = "Silk Pocket Square - $18"
+
+[node name="ClassSusBtn" type="Button" parent="AssociateContainer"]
+margin_top = 46.0
+margin_right = 105.0
+margin_bottom = 61.0
+rect_min_size = Vector2( 0, 15 )
+text = "Classy Suspenders - $20"
+
+[node name="SoldierContainer" type="VBoxContainer" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -52.5
+margin_top = -7.0
+margin_right = 52.5
+margin_bottom = 54.0
+custom_constants/separation = 8
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItShirtBtn" type="Button" parent="SoldierContainer"]
+margin_right = 105.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 0, 15 )
+text = "Italian Shirt - $20"
+
+[node name="OakCaneBtn" type="Button" parent="SoldierContainer"]
+margin_top = 23.0
+margin_right = 105.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 0, 15 )
+text = "Oak Cane - $23"
+
+[node name="ItPantBtn" type="Button" parent="SoldierContainer"]
+margin_top = 46.0
+margin_right = 105.0
+margin_bottom = 61.0
+rect_min_size = Vector2( 0, 15 )
+text = "Italian Pants - $25"
+
+[node name="CapoContainer" type="VBoxContainer" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -52.0
+margin_top = -7.0
+margin_right = 53.0
+margin_bottom = 54.0
+custom_constants/separation = 8
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItWCoatBtn" type="Button" parent="CapoContainer"]
+margin_right = 105.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 0, 15 )
+text = "Italian Waist Coat - $25"
+
+[node name="ItShoesBtn" type="Button" parent="CapoContainer"]
+margin_top = 23.0
+margin_right = 105.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 0, 15 )
+text = "Italian Shoes - $28"
+
+[node name="ItSJacketBtn" type="Button" parent="CapoContainer"]
+margin_top = 46.0
+margin_right = 105.0
+margin_bottom = 61.0
+rect_min_size = Vector2( 0, 15 )
+text = "Italian S Jacket- $30"
+
+[node name="UnderbossContainer" type="VBoxContainer" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -52.5
+margin_top = -7.0
+margin_right = 52.5
+margin_bottom = 54.0
+custom_constants/separation = 8
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="STieBtn" type="Button" parent="UnderbossContainer"]
+margin_right = 105.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 0, 15 )
+text = "Silk Tie - £$30"
+
+[node name="ItCoatBtn" type="Button" parent="UnderbossContainer"]
+margin_top = 23.0
+margin_right = 105.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 0, 15 )
+text = "Italian Coat - $35"
+
+[node name="GSusBtn" type="Button" parent="UnderbossContainer"]
+margin_top = 46.0
+margin_right = 105.0
+margin_bottom = 61.0
+rect_min_size = Vector2( 0, 15 )
+text = "Gold Suspeders - $38"
+
+[node name="ConsigliereContainer" type="VBoxContainer" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -52.5
+margin_top = -7.0
+margin_right = 52.5
+margin_bottom = 54.0
+custom_constants/separation = 8
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ICaneBtn" type="Button" parent="ConsigliereContainer"]
+margin_right = 105.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 0, 15 )
+text = "Ivory Cane - $40"
+
+[node name="CFedoraBtn" type="Button" parent="ConsigliereContainer"]
+margin_top = 23.0
+margin_right = 105.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 0, 15 )
+text = "Classy Fedora - $45"
+
+[node name="SilkSocksBtn" type="Button" parent="ConsigliereContainer"]
+margin_top = 46.0
+margin_right = 105.0
+margin_bottom = 61.0
+rect_min_size = Vector2( 0, 15 )
+text = "Silk Socks - $50"
+
+[node name="GodfatherContainer" type="VBoxContainer" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -52.5
+margin_top = -7.0
+margin_right = 52.5
+margin_bottom = 54.0
+custom_constants/separation = 8
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GSuitBtn" type="Button" parent="GodfatherContainer"]
+margin_right = 105.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 0, 15 )
+text = "Godfather Suit - $==0"
+
+[node name="GShoesBtn" type="Button" parent="GodfatherContainer"]
+margin_top = 23.0
+margin_right = 105.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 0, 15 )
+text = "Godfather Shoes - $0"
+
+[node name="GCoatBtn" type="Button" parent="GodfatherContainer"]
+margin_top = 46.0
+margin_right = 105.0
+margin_bottom = 61.0
+rect_min_size = Vector2( 0, 15 )
+text = "Godfather Coat - $0"
+
+[node name="BuyOrNo" type="HBoxContainer" parent="."]
+visible = false
+margin_left = 9.0
+margin_top = 131.0
+margin_right = 135.0
+margin_bottom = 166.0
+custom_constants/separation = 19
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BuyBtn" type="Button" parent="BuyOrNo"]
+margin_left = 17.0
+margin_right = 53.0
+margin_bottom = 35.0
+rect_min_size = Vector2( 36, 35 )
+text = "Purchase"
+
+[node name="NoBtn" type="Button" parent="BuyOrNo"]
+margin_left = 72.0
+margin_right = 108.0
+margin_bottom = 35.0
+rect_min_size = Vector2( 36, 35 )
+text = "Cancel"
+
+[node name="BackPanel" type="Panel" parent="."]
+margin_left = 49.0
+margin_top = 14.0
+margin_right = 93.0
+margin_bottom = 23.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LocationContainer" type="CenterContainer" parent="."]
+margin_left = 9.0
+margin_top = 12.0
+margin_right = 135.0
+margin_bottom = 24.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="LocationContainer"]
+margin_left = 40.0
+margin_right = 85.0
+margin_bottom = 12.0
+text = "The Tailor"
+
+[node name="InventoryPanel" parent="." instance=ExtResource( 3 )]
+visible = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/FADE6 = SubResource( 3 )
+
+[node name="ColorRect" type="ColorRect" parent="AnimationPlayer"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="BottomButtons1/Button5" to="." method="_on_Button5_pressed"]
+[connection signal="pressed" from="BottomButtons1/Button6" to="." method="_on_Button6_pressed"]
+[connection signal="pressed" from="UnknownContainer/UHandBtn" to="." method="_on_UHandBtn_pressed"]
+[connection signal="pressed" from="UnknownContainer/CSusBtn" to="." method="_on_CSusBtn_pressed"]
+[connection signal="pressed" from="UpcomingContainer/OldShirtBtn" to="." method="_on_OldShirtBtn_pressed"]
+[connection signal="pressed" from="UpcomingContainer/StreetCapBtn" to="." method="_on_StreetCapBtn_pressed"]
+[connection signal="pressed" from="UpcomingContainer/CheapCaneBtn" to="." method="_on_CheapCaneBtn_pressed"]
+[connection signal="pressed" from="FelonContainer/OSockBtn" to="." method="_on_OSockBtn_pressed"]
+[connection signal="pressed" from="FelonContainer/OWcoatBtn" to="." method="_on_OWcoatBtn_pressed"]
+[connection signal="pressed" from="FelonContainer/OShoeBtn" to="." method="_on_OShoeBtn_pressed"]
+[connection signal="pressed" from="CrewMemberContainer/OTieBtn" to="." method="_on_OTieBtn_pressed"]
+[connection signal="pressed" from="CrewMemberContainer/OPantsBtn" to="." method="_on_OPantsBtn_pressed"]
+[connection signal="pressed" from="CrewMemberContainer/OSJacketBtn" to="." method="_on_OSJacketBtn_pressed"]
+[connection signal="pressed" from="AssociateContainer/OCoatBtn" to="." method="_on_OCoatBtn_pressed"]
+[connection signal="pressed" from="AssociateContainer/SPocketBtn" to="." method="_on_SPocketBtn_pressed"]
+[connection signal="pressed" from="AssociateContainer/ClassSusBtn" to="." method="_on_ClassSusBtn_pressed"]
+[connection signal="pressed" from="SoldierContainer/ItShirtBtn" to="." method="_on_ItShirtBtn_pressed"]
+[connection signal="pressed" from="SoldierContainer/OakCaneBtn" to="." method="_on_OakCaneBtn_pressed"]
+[connection signal="pressed" from="SoldierContainer/ItPantBtn" to="." method="_on_ItPantBtn_pressed"]
+[connection signal="pressed" from="CapoContainer/ItWCoatBtn" to="." method="_on_ItWCoatBtn_pressed"]
+[connection signal="pressed" from="CapoContainer/ItShoesBtn" to="." method="_on_ItShoesBtn_pressed"]
+[connection signal="pressed" from="CapoContainer/ItSJacketBtn" to="." method="_on_ItSJacketBtn_pressed"]
+[connection signal="pressed" from="UnderbossContainer/STieBtn" to="." method="_on_STieBtn_pressed"]
+[connection signal="pressed" from="UnderbossContainer/ItCoatBtn" to="." method="_on_ItCoatBtn_pressed"]
+[connection signal="pressed" from="UnderbossContainer/GSusBtn" to="." method="_on_GSusBtn_pressed"]
+[connection signal="pressed" from="ConsigliereContainer/ICaneBtn" to="." method="_on_ICaneBtn_pressed"]
+[connection signal="pressed" from="ConsigliereContainer/CFedoraBtn" to="." method="_on_CFedoraBtn_pressed"]
+[connection signal="pressed" from="ConsigliereContainer/SilkSocksBtn" to="." method="_on_SilkSocksBtn_pressed"]
+[connection signal="pressed" from="GodfatherContainer/GSuitBtn" to="." method="_on_GSuitBtn_pressed"]
+[connection signal="pressed" from="GodfatherContainer/GShoesBtn" to="." method="_on_GShoesBtn_pressed"]
+[connection signal="pressed" from="GodfatherContainer/GCoatBtn" to="." method="_on_GCoatBtn_pressed"]
+[connection signal="pressed" from="BuyOrNo/BuyBtn" to="." method="_on_BuyBtn_pressed"]
+[connection signal="pressed" from="BuyOrNo/NoBtn" to="." method="_on_NoBtn_pressed"]

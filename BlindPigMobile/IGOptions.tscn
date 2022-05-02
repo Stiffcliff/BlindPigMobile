@@ -1,0 +1,111 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Options.gd" type="Script" id=1]
+[ext_resource path="res://Wall.tscn" type="PackedScene" id=2]
+[ext_resource path="res://PanelBackground.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Game_Saved.tscn" type="PackedScene" id=4]
+[ext_resource path="res://SaveDown.tres" type="Animation" id=5]
+
+[node name="Options" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Wall" parent="Background" instance=ExtResource( 2 )]
+
+[node name="Panel" parent="Background" instance=ExtResource( 3 )]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -43.0
+margin_top = -71.0
+margin_right = 45.0
+margin_bottom = -20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SaveButton" type="Button" parent="Background/VBoxContainer"]
+margin_right = 88.0
+margin_bottom = 12.0
+rect_min_size = Vector2( 88, 12 )
+text = "Save Game"
+
+[node name="BackButton" type="Button" parent="Background/VBoxContainer"]
+margin_top = 16.0
+margin_right = 88.0
+margin_bottom = 28.0
+rect_min_size = Vector2( 88, 12 )
+text = "Back"
+
+[node name="QuitButton" type="Button" parent="Background/VBoxContainer"]
+margin_top = 32.0
+margin_right = 88.0
+margin_bottom = 44.0
+rect_min_size = Vector2( 88, 12 )
+text = "Quit"
+
+[node name="OptionsHolder" type="VBoxContainer" parent="Background"]
+margin_left = 23.0
+margin_top = 54.0
+margin_right = 127.0
+margin_bottom = 135.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MusicVolume" type="Label" parent="Background/OptionsHolder"]
+margin_right = 104.0
+margin_bottom = 12.0
+text = "Music Volume:"
+
+[node name="MusicSlider" type="HSlider" parent="Background/OptionsHolder"]
+margin_top = 16.0
+margin_right = 104.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 100, 20 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MusicVolume2" type="Label" parent="Background/OptionsHolder"]
+margin_top = 40.0
+margin_right = 104.0
+margin_bottom = 52.0
+text = "SFX Volume:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EffectsSlider" type="HSlider" parent="Background/OptionsHolder"]
+margin_top = 56.0
+margin_right = 104.0
+margin_bottom = 76.0
+rect_min_size = Vector2( 100, 20 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Game_Saved" parent="." instance=ExtResource( 4 )]
+modulate = Color( 1, 1, 1, 0 )
+margin_bottom = -0.000366211
+mouse_filter = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/SaveDown = ExtResource( 5 )
+[connection signal="pressed" from="Background/VBoxContainer/SaveButton" to="." method="_on_SaveButton_pressed"]
+[connection signal="pressed" from="Background/VBoxContainer/BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="pressed" from="Background/VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]

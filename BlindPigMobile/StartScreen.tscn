@@ -1,0 +1,130 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://StartScreen.gd" type="Script" id=1]
+[ext_resource path="res://Wall.tscn" type="PackedScene" id=2]
+[ext_resource path="res://FadeAnimation2.tres" type="Animation" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "FADE3"
+length = 0.6
+step = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimationPlayer/ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+
+[node name="StartScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Wall" parent="Background" instance=ExtResource( 2 )]
+
+[node name="Panel" type="Panel" parent="Background"]
+margin_left = 8.0
+margin_top = 10.0
+margin_right = 135.0
+margin_bottom = 247.0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="WelcomeHolder" type="CenterContainer" parent="."]
+margin_left = 0.374573
+margin_top = 14.8695
+margin_right = 143.375
+margin_bottom = 62.8695
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WelcomeMsg" type="Label" parent="WelcomeHolder"]
+margin_left = 43.0
+margin_top = 11.0
+margin_right = 99.0
+margin_bottom = 37.0
+text = "Welcome to
+Blind Pig:
+The Boroughs"
+align = 1
+
+[node name="InfoHolder" type="CenterContainer" parent="."]
+margin_left = 1.0
+margin_top = 49.0
+margin_right = 144.0
+margin_bottom = 218.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="InfoHolder"]
+margin_left = 17.0
+margin_top = 26.0
+margin_right = 126.0
+margin_bottom = 143.0
+text = "Manhattan, 1940.
+
+
+Fresh off the boat you're
+here to make a name for
+yourself.
+
+
+You find yourself on Main
+Street when you hear
+a sound behind you.
+
+
+
+You quickly turn around.
+"
+align = 1
+
+[node name="BeginButton" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -34.5
+margin_top = -35.5
+margin_right = 34.5
+margin_bottom = -15.5
+text = "Hello?..."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/FADE3 = SubResource( 1 )
+anims/FadeAnimation = ExtResource( 3 )
+
+[node name="ColorRect" type="ColorRect" parent="AnimationPlayer"]
+modulate = Color( 0, 0, 0, 0 )
+margin_right = 143.0
+margin_bottom = 256.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="BeginButton" to="." method="_on_BeginButton_pressed"]

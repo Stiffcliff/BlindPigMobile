@@ -1,0 +1,49 @@
+[gd_scene format=2]
+
+[node name="StatsPanel" type="Panel"]
+margin_top = 83.0
+margin_right = 144.0
+margin_bottom = 112.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StatsContainer" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 2.0
+custom_constants/separation = 9
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Health" type="Label" parent="StatsContainer"]
+margin_top = 6.0
+margin_right = 16.0
+margin_bottom = 25.0
+text = "HP
+0"
+
+[node name="Ammo" type="Label" parent="StatsContainer"]
+margin_left = 25.0
+margin_top = 6.0
+margin_right = 53.0
+margin_bottom = 25.0
+text = "Ammo
+0"
+
+[node name="Rep" type="Label" parent="StatsContainer"]
+margin_left = 62.0
+margin_top = 6.0
+margin_right = 82.0
+margin_bottom = 25.0
+text = "Rep
+0"
+
+[node name="Money" type="Label" parent="StatsContainer"]
+margin_left = 91.0
+margin_top = 6.0
+margin_right = 121.0
+margin_bottom = 25.0
+text = "Money
+$0"

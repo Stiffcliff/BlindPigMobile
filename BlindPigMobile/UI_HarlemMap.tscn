@@ -1,0 +1,278 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://UI_HarlemMap.gd" type="Script" id=1]
+[ext_resource path="res://Wall.tscn" type="PackedScene" id=2]
+[ext_resource path="res://PanelBackground.tscn" type="PackedScene" id=3]
+[ext_resource path="res://InventoryPanel.tscn" type="PackedScene" id=4]
+[ext_resource path="res://StatsPanel.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Harlem0.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Harlem1.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Player.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Harlem2.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Harlem3.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Harlem4.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Harlem5.png" type="Texture" id=12]
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 6 ), ExtResource( 6 ), ExtResource( 6 ), ExtResource( 6 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="Animation" id=1]
+resource_name = "DealDmg"
+length = 0.8
+
+[sub_resource type="Animation" id=2]
+resource_name = "IDLE"
+length = 1.5
+loop = true
+
+[sub_resource type="Animation" id=3]
+resource_name = "IDLE2"
+length = 1.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 22.4934, 54.0349 ), Vector2( 22.4934, 53.0349 ), Vector2( 22.493, 54.035 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Player:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.7, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "RecDmg"
+length = 0.8
+
+[sub_resource type="Animation" id=5]
+length = 0.6
+step = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimationPlayer/ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="UI_Harlem" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Wall" parent="." instance=ExtResource( 2 )]
+
+[node name="Panel" parent="." instance=ExtResource( 3 )]
+
+[node name="StatsPanel" parent="." instance=ExtResource( 5 )]
+
+[node name="GraphicsPanel" type="Panel" parent="."]
+margin_left = 10.0
+margin_top = 12.0
+margin_right = 134.0
+margin_bottom = 82.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="GraphicsPanel"]
+position = Vector2( 61.9814, 35.03 )
+frames = SubResource( 6 )
+
+[node name="PlayerAnimator" type="AnimationPlayer" parent="GraphicsPanel"]
+anims/DealDmg = SubResource( 1 )
+anims/IDLE = SubResource( 2 )
+anims/IDLE2 = SubResource( 3 )
+anims/RecDmg = SubResource( 4 )
+
+[node name="Player" type="Sprite" parent="GraphicsPanel"]
+position = Vector2( 22.4934, 54.0349 )
+texture = ExtResource( 8 )
+
+[node name="TextPanel" type="Panel" parent="."]
+margin_top = 216.0
+margin_right = 144.0
+margin_bottom = 256.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TextPanel"]
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 143.0
+margin_bottom = 15.0
+custom_constants/line_spacing = 5
+text = "Greetings from Downtown Harlem.
+
+Heal up at the clinic or try your
+luck with the card sharks."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonContainer" type="GridContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -62.5
+margin_top = -13.5
+margin_right = 62.5
+margin_bottom = 85.5
+custom_constants/vseparation = 12
+custom_constants/hseparation = 14
+columns = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button1" type="Button" parent="ButtonContainer"]
+margin_right = 55.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 55, 25 )
+text = "FIGHT"
+
+[node name="Button2" type="Button" parent="ButtonContainer"]
+margin_left = 69.0
+margin_right = 124.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 55, 25 )
+text = "Clinic"
+clip_text = true
+
+[node name="Button3" type="Button" parent="ButtonContainer"]
+margin_top = 37.0
+margin_right = 55.0
+margin_bottom = 62.0
+rect_min_size = Vector2( 55, 25 )
+text = "3 C. Monte"
+clip_text = true
+
+[node name="Button4" type="Button" parent="ButtonContainer"]
+margin_left = 69.0
+margin_top = 37.0
+margin_right = 124.0
+margin_bottom = 62.0
+rect_min_size = Vector2( 55, 25 )
+text = "General Store"
+clip_text = true
+
+[node name="Button5" type="Button" parent="ButtonContainer"]
+margin_top = 74.0
+margin_right = 55.0
+margin_bottom = 99.0
+rect_min_size = Vector2( 55, 25 )
+text = "Inventory"
+
+[node name="Button6" type="Button" parent="ButtonContainer"]
+margin_left = 69.0
+margin_top = 74.0
+margin_right = 124.0
+margin_bottom = 99.0
+rect_min_size = Vector2( 55, 25 )
+text = "Back"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel2" type="Panel" parent="."]
+margin_left = 56.0
+margin_top = 13.0
+margin_right = 87.0
+margin_bottom = 22.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel3" type="Panel" parent="."]
+margin_left = 49.0
+margin_top = 72.0
+margin_right = 95.0
+margin_bottom = 81.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InventoryPanel" parent="." instance=ExtResource( 4 )]
+visible = false
+
+[node name="LocationContainer" type="CenterContainer" parent="."]
+margin_left = 9.5
+margin_top = 10.5
+margin_right = 134.5
+margin_bottom = 22.5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LocationLbl" type="Label" parent="LocationContainer"]
+margin_left = 46.0
+margin_right = 78.0
+margin_bottom = 12.0
+text = "Harlem"
+
+[node name="FactionContainer" type="CenterContainer" parent="."]
+margin_left = 9.5
+margin_top = 69.5
+margin_right = 134.5
+margin_bottom = 81.5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FactionLbl" type="Label" parent="FactionContainer"]
+margin_left = 37.0
+margin_right = 88.0
+margin_bottom = 12.0
+text = "Harlem Mob"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/FADE8 = SubResource( 5 )
+
+[node name="ColorRect" type="ColorRect" parent="AnimationPlayer"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.05945
+margin_top = -1.05946
+margin_right = 1.05945
+margin_bottom = -1.05946
+mouse_filter = 2
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="ButtonContainer/Button1" to="." method="_on_Button1_pressed"]
+[connection signal="pressed" from="ButtonContainer/Button2" to="." method="_on_Button2_pressed"]
+[connection signal="pressed" from="ButtonContainer/Button3" to="." method="_on_Button3_pressed"]
+[connection signal="pressed" from="ButtonContainer/Button4" to="." method="_on_Button4_pressed"]
+[connection signal="pressed" from="ButtonContainer/Button5" to="." method="_on_Button5_pressed"]
+[connection signal="pressed" from="ButtonContainer/Button6" to="." method="_on_Button6_pressed"]

@@ -1,0 +1,264 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://WeaponsTab.gd" type="Script" id=1]
+[ext_resource path="res://Game_Saved.tscn" type="PackedScene" id=3]
+[ext_resource path="res://SaveDown.tres" type="Animation" id=4]
+
+[node name="WeaponsTab" type="Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -63.0
+margin_top = -118.0
+margin_right = 63.0
+margin_bottom = 118.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 1.0
+margin_bottom = -18.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+margin_right = 126.0
+margin_bottom = 217.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="ScrollContainer/VBoxContainer"]
+margin_right = 126.0
+margin_bottom = 12.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/CenterContainer"]
+margin_left = 43.0
+margin_right = 83.0
+margin_bottom = 12.0
+text = "Weapons:"
+
+[node name="CenterContainer2" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+margin_top = 17.0
+margin_right = 126.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/CenterContainer2"]
+margin_right = 92.0
+margin_bottom = 12.0
+text = "Weapon:  Dmg:   Crit:"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FistsContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+visible = false
+margin_top = 34.0
+margin_right = 126.0
+margin_bottom = 59.0
+rect_min_size = Vector2( 10, 25 )
+custom_constants/separation = 2
+
+[node name="FistsNameLbl" type="Label" parent="ScrollContainer/VBoxContainer/FistsContainer"]
+margin_top = 6.0
+margin_right = 35.0
+margin_bottom = 18.0
+rect_min_size = Vector2( 35, 0 )
+text = "Fists"
+align = 1
+
+[node name="FistsDmgLbl" type="Label" parent="ScrollContainer/VBoxContainer/FistsContainer"]
+margin_left = 37.0
+margin_top = 6.0
+margin_right = 66.0
+margin_bottom = 18.0
+rect_min_size = Vector2( 29, 0 )
+text = "0-2"
+align = 1
+
+[node name="FistsCritLbl" type="Label" parent="ScrollContainer/VBoxContainer/FistsContainer"]
+margin_left = 68.0
+margin_top = 6.0
+margin_right = 97.0
+margin_bottom = 18.0
+rect_min_size = Vector2( 29, 0 )
+text = "10%"
+align = 1
+
+[node name="btnEquip1" type="Button" parent="ScrollContainer/VBoxContainer/FistsContainer"]
+margin_left = 99.0
+margin_right = 122.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 23, 23 )
+size_flags_horizontal = 0
+custom_constants/hseparation = 0
+text = "Equip"
+
+[node name="DustersContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+visible = false
+margin_top = 34.0
+margin_right = 126.0
+margin_bottom = 59.0
+rect_min_size = Vector2( 10, 25 )
+custom_constants/separation = 2
+
+[node name="DustersNameLbl" type="Label" parent="ScrollContainer/VBoxContainer/DustersContainer"]
+margin_top = 6.0
+margin_right = 35.0
+margin_bottom = 18.0
+rect_min_size = Vector2( 35, 0 )
+text = "Dusters"
+align = 1
+
+[node name="DustersDmgLbl" type="Label" parent="ScrollContainer/VBoxContainer/DustersContainer"]
+margin_left = 37.0
+margin_top = 6.0
+margin_right = 66.0
+margin_bottom = 18.0
+rect_min_size = Vector2( 29, 0 )
+text = "1-3"
+align = 1
+
+[node name="DustersCritLbl" type="Label" parent="ScrollContainer/VBoxContainer/DustersContainer"]
+margin_left = 68.0
+margin_top = 6.0
+margin_right = 97.0
+margin_bottom = 18.0
+rect_min_size = Vector2( 29, 0 )
+text = "12%"
+align = 1
+
+[node name="btnEquip4" type="Button" parent="ScrollContainer/VBoxContainer/DustersContainer"]
+margin_left = 99.0
+margin_right = 122.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 23, 23 )
+size_flags_horizontal = 0
+custom_constants/hseparation = 0
+text = "Equip"
+
+[node name="HandgunContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+visible = false
+margin_top = 64.0
+margin_right = 126.0
+margin_bottom = 89.0
+rect_min_size = Vector2( 10, 25 )
+custom_constants/separation = 2
+
+[node name="HandGunNameLbl" type="Label" parent="ScrollContainer/VBoxContainer/HandgunContainer"]
+margin_top = 6.0
+margin_right = 35.0
+margin_bottom = 18.0
+rect_min_size = Vector2( 35, 0 )
+text = "Pistol"
+align = 1
+
+[node name="HandGunDmgLbl" type="Label" parent="ScrollContainer/VBoxContainer/HandgunContainer"]
+margin_left = 37.0
+margin_top = 6.0
+margin_right = 66.0
+margin_bottom = 18.0
+rect_min_size = Vector2( 29, 0 )
+text = "2-5"
+align = 1
+
+[node name="HandGunCritLbl" type="Label" parent="ScrollContainer/VBoxContainer/HandgunContainer"]
+margin_left = 68.0
+margin_top = 6.0
+margin_right = 97.0
+margin_bottom = 18.0
+rect_min_size = Vector2( 29, 0 )
+text = "8%"
+align = 1
+
+[node name="btnEquip2" type="Button" parent="ScrollContainer/VBoxContainer/HandgunContainer"]
+margin_left = 99.0
+margin_right = 122.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 23, 23 )
+size_flags_horizontal = 0
+custom_constants/hseparation = 0
+text = "Equip"
+
+[node name="RifleContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+visible = false
+margin_top = 64.0
+margin_right = 126.0
+margin_bottom = 89.0
+rect_min_size = Vector2( 10, 25 )
+custom_constants/separation = 2
+
+[node name="RifleNameLbl" type="Label" parent="ScrollContainer/VBoxContainer/RifleContainer"]
+margin_top = 6.0
+margin_right = 35.0
+margin_bottom = 18.0
+rect_min_size = Vector2( 35, 0 )
+text = "Rifle"
+align = 1
+
+[node name="RifleDmgLbl" type="Label" parent="ScrollContainer/VBoxContainer/RifleContainer"]
+margin_left = 37.0
+margin_top = 6.0
+margin_right = 66.0
+margin_bottom = 18.0
+rect_min_size = Vector2( 29, 0 )
+text = "3-10"
+align = 1
+
+[node name="RifleCritLbl" type="Label" parent="ScrollContainer/VBoxContainer/RifleContainer"]
+margin_left = 68.0
+margin_top = 6.0
+margin_right = 97.0
+margin_bottom = 18.0
+rect_min_size = Vector2( 29, 0 )
+text = "15%"
+align = 1
+
+[node name="btnEquip3" type="Button" parent="ScrollContainer/VBoxContainer/RifleContainer"]
+margin_left = 99.0
+margin_right = 122.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 23, 23 )
+size_flags_horizontal = 0
+custom_constants/hseparation = 0
+text = "Equip"
+
+[node name="btnClose" type="Button" parent="."]
+margin_left = 39.2081
+margin_top = 218.0
+margin_right = 94.2081
+margin_bottom = 233.0
+text = "Close"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Game_Saved" parent="." instance=ExtResource( 3 )]
+modulate = Color( 1, 1, 1, 0 )
+margin_bottom = -0.000305176
+mouse_filter = 2
+
+[node name="AnimationPlayer3" type="AnimationPlayer" parent="."]
+anims/SaveDown = ExtResource( 4 )
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/FistsContainer/btnEquip1" to="." method="_on_btnEquip1_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/DustersContainer/btnEquip4" to="." method="_on_btnEquip4_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/HandgunContainer/btnEquip2" to="." method="_on_btnEquip2_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/RifleContainer/btnEquip3" to="." method="_on_btnEquip3_pressed"]
+[connection signal="pressed" from="btnClose" to="." method="_on_btnClose_pressed"]

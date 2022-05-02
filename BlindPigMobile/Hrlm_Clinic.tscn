@@ -1,0 +1,184 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://InventoryPanel.tscn" type="PackedScene" id=1]
+[ext_resource path="res://PanelBackground.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Wall.tscn" type="PackedScene" id=3]
+[ext_resource path="res://StatsPanel.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Nurse2.png" type="Texture" id=5]
+[ext_resource path="res://Hrlm_Clinic.gd" type="Script" id=6]
+[ext_resource path="res://Assets/Nurse1.png" type="Texture" id=7]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 7 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "default",
+"speed": 4.0
+} ]
+
+[sub_resource type="Animation" id=2]
+length = 0.6
+step = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimationPlayer/ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+
+[node name="Hrlm_Clinic" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Wall" parent="." instance=ExtResource( 3 )]
+
+[node name="Panel" parent="." instance=ExtResource( 2 )]
+
+[node name="StatsPanel" parent="." instance=ExtResource( 4 )]
+
+[node name="TextPanel" type="Panel" parent="."]
+margin_top = 216.0
+margin_right = 144.0
+margin_bottom = 256.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TextPanel"]
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 143.0
+margin_bottom = 39.0
+text = "Welcome to the clinic.
+It aint much but its honest work...
+
+Most of the time."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GraphicsPanel" type="Panel" parent="."]
+margin_left = 10.0
+margin_top = 12.0
+margin_right = 134.0
+margin_bottom = 82.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 72.0281, 47.0247 )
+frames = SubResource( 1 )
+
+[node name="ButtonContainer" type="GridContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -62.5
+margin_top = 60.5
+margin_right = 62.5
+margin_bottom = 85.5
+custom_constants/vseparation = 12
+custom_constants/hseparation = 14
+columns = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button5" type="Button" parent="ButtonContainer"]
+margin_right = 55.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 55, 25 )
+text = "Inventory"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button6" type="Button" parent="ButtonContainer"]
+margin_left = 69.0
+margin_right = 124.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 55, 25 )
+text = "Back"
+
+[node name="HealButtonContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -46.0
+margin_top = -4.0
+margin_right = 47.0
+margin_bottom = 47.0
+custom_constants/separation = 11
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonSingle" type="Button" parent="HealButtonContainer"]
+margin_right = 93.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 0, 20 )
+text = "Heal 1 - $2.50"
+
+[node name="ButtonFive" type="Button" parent="HealButtonContainer"]
+margin_top = 31.0
+margin_right = 93.0
+margin_bottom = 51.0
+rect_min_size = Vector2( 0, 20 )
+text = "Heal 5 - $5.00"
+
+[node name="Panel2" type="Panel" parent="."]
+margin_left = 49.0
+margin_top = 71.0
+margin_right = 95.0
+margin_bottom = 80.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+margin_left = 9.0
+margin_top = 69.0
+margin_right = 137.0
+margin_bottom = 81.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CenterContainer"]
+margin_left = 40.0
+margin_right = 87.0
+margin_bottom = 12.0
+text = "The 'Clinic'"
+
+[node name="InventoryPanel" parent="." instance=ExtResource( 1 )]
+visible = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/FADE6 = SubResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="AnimationPlayer"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="ButtonContainer/Button5" to="." method="_on_Button5_pressed"]
+[connection signal="pressed" from="ButtonContainer/Button6" to="." method="_on_Button6_pressed"]
+[connection signal="pressed" from="HealButtonContainer/ButtonSingle" to="." method="_on_ButtonSingle_pressed"]
+[connection signal="pressed" from="HealButtonContainer/ButtonFive" to="." method="_on_ButtonFive_pressed"]

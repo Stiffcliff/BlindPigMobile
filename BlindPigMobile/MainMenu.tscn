@@ -1,0 +1,129 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://MainMenu.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Title.png" type="Texture" id=2]
+[ext_resource path="res://Wall.tscn" type="PackedScene" id=3]
+[ext_resource path="res://FadeAnimation2.tres" type="Animation" id=4]
+[ext_resource path="res://Game_Loaded.tscn" type="PackedScene" id=6]
+[ext_resource path="res://FADE4.tres" type="Animation" id=7]
+[ext_resource path="res://No_Save.tscn" type="PackedScene" id=8]
+
+[sub_resource type="Animation" id=1]
+resource_name = "FADE2"
+length = 0.6
+step = 0.6
+
+[node name="MainMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Wall" parent="Background" instance=ExtResource( 3 )]
+position = Vector2( 70.0911, 129.616 )
+
+[node name="TitleHolder" type="CenterContainer" parent="Background"]
+margin_right = 143.0
+margin_bottom = 133.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MenuBacking" type="Panel" parent="Background"]
+margin_left = 23.0
+margin_top = 127.0
+margin_right = 120.0
+margin_bottom = 225.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MenuButtonHolder" type="VBoxContainer" parent="Background"]
+margin_left = 32.0
+margin_top = 131.0
+margin_right = 111.0
+margin_bottom = 215.0
+custom_constants/separation = 8
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StartButton" type="Button" parent="Background/MenuButtonHolder"]
+margin_right = 79.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 79, 20 )
+text = "New Game"
+
+[node name="LoadButton" type="Button" parent="Background/MenuButtonHolder"]
+margin_top = 28.0
+margin_right = 79.0
+margin_bottom = 43.0
+rect_min_size = Vector2( 0, 15 )
+text = "Load Game"
+
+[node name="OptionsButton" type="Button" parent="Background/MenuButtonHolder"]
+margin_top = 51.0
+margin_right = 79.0
+margin_bottom = 66.0
+rect_min_size = Vector2( 0, 15 )
+text = "Options"
+
+[node name="ExitButton" type="Button" parent="Background/MenuButtonHolder"]
+margin_top = 74.0
+margin_right = 79.0
+margin_bottom = 89.0
+rect_min_size = Vector2( 0, 15 )
+text = "Exit"
+
+[node name="Panel" type="Panel" parent="Background"]
+margin_left = 9.0
+margin_top = 33.0
+margin_right = 137.0
+margin_bottom = 93.0
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 74, 64.75 )
+scale = Vector2( 0.203866, 0.284483 )
+texture = ExtResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/FADE2 = SubResource( 1 )
+anims/FADE4 = ExtResource( 7 )
+anims/FadeAnimation = ExtResource( 4 )
+
+[node name="ColorRect" type="ColorRect" parent="AnimationPlayer"]
+modulate = Color( 0, 0, 0, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Game_Loaded" parent="." instance=ExtResource( 6 )]
+visible = false
+
+[node name="No_Save" parent="." instance=ExtResource( 8 )]
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 0.0
+margin_bottom = 0.0
+[connection signal="pressed" from="Background/MenuButtonHolder/StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="pressed" from="Background/MenuButtonHolder/LoadButton" to="." method="_on_LoadButton_pressed"]
+[connection signal="pressed" from="Background/MenuButtonHolder/OptionsButton" to="." method="_on_OptionsButton_pressed"]
+[connection signal="pressed" from="Background/MenuButtonHolder/ExitButton" to="." method="_on_ExitButton_pressed"]

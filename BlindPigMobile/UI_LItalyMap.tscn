@@ -1,0 +1,299 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://UI_LItalyMap.gd" type="Script" id=1]
+[ext_resource path="res://Wall.tscn" type="PackedScene" id=2]
+[ext_resource path="res://PanelBackground.tscn" type="PackedScene" id=3]
+[ext_resource path="res://InventoryPanel.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Panel9Slice.tres" type="StyleBox" id=5]
+[ext_resource path="res://Assets/LI3.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Panel9Graphics.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Audio/LittleItalyTheme.wav" type="AudioStream" id=8]
+[ext_resource path="res://StatsPanel.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Assets/Player.png" type="Texture" id=10]
+[ext_resource path="res://Assets/LI1.png" type="Texture" id=11]
+[ext_resource path="res://Assets/LI2.png" type="Texture" id=12]
+[ext_resource path="res://Assets/LI0.png" type="Texture" id=13]
+[ext_resource path="res://Assets/LI4.png" type="Texture" id=14]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 7 )
+region_rect = Rect2( 0, 0, 6, 6 )
+margin_left = 2.0
+margin_right = 2.0
+margin_top = 2.0
+margin_bottom = 2.0
+
+[sub_resource type="SpriteFrames" id=7]
+animations = [ {
+"frames": [ ExtResource( 13 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 6 ), ExtResource( 14 ), ExtResource( 13 ), ExtResource( 13 ), ExtResource( 13 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "default",
+"speed": 4.0
+} ]
+
+[sub_resource type="Animation" id=2]
+resource_name = "DealDmg"
+length = 0.8
+
+[sub_resource type="Animation" id=3]
+resource_name = "IDLE"
+length = 1.5
+loop = true
+
+[sub_resource type="Animation" id=4]
+resource_name = "IDLE2"
+length = 1.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 22.4934, 54.0349 ), Vector2( 22.4934, 53.0349 ), Vector2( 22.493, 54.035 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Player:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.7, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "RecDmg"
+length = 0.8
+
+[sub_resource type="Animation" id=6]
+length = 0.6
+step = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimationPlayer/ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="UI_LItaly" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Wall" parent="." instance=ExtResource( 2 )]
+
+[node name="Panel" parent="." instance=ExtResource( 3 )]
+custom_styles/panel = ExtResource( 5 )
+
+[node name="GraphicsPanel" type="Panel" parent="."]
+margin_left = 10.0
+margin_top = 12.0
+margin_right = 134.0
+margin_bottom = 82.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="GraphicsPanel"]
+position = Vector2( 61.9892, 34.9728 )
+frames = SubResource( 7 )
+
+[node name="Player" type="Sprite" parent="GraphicsPanel"]
+position = Vector2( 22.4934, 54.0349 )
+texture = ExtResource( 10 )
+
+[node name="PlayerAnimator" type="AnimationPlayer" parent="GraphicsPanel"]
+anims/DealDmg = SubResource( 2 )
+anims/IDLE = SubResource( 3 )
+anims/IDLE2 = SubResource( 4 )
+anims/RecDmg = SubResource( 5 )
+
+[node name="StatsPanel" parent="." instance=ExtResource( 9 )]
+
+[node name="TextPanel" type="Panel" parent="."]
+margin_top = 216.0
+margin_right = 144.0
+margin_bottom = 256.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TextPanel"]
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 149.0
+margin_bottom = 40.0
+custom_constants/line_spacing = 5
+text = "Welcome to Little Italy.
+
+Visit the underboss for a contract
+or buy some clothes at the tailor."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonContainer" type="GridContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -62.5
+margin_top = -13.5
+margin_right = 62.5
+margin_bottom = 85.5
+custom_constants/vseparation = 12
+custom_constants/hseparation = 14
+columns = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button1" type="Button" parent="ButtonContainer"]
+margin_right = 55.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 55, 25 )
+text = "FIGHT"
+
+[node name="Button2" type="Button" parent="ButtonContainer"]
+margin_left = 69.0
+margin_right = 124.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 55, 25 )
+text = "Underboss"
+clip_text = true
+
+[node name="Button3" type="Button" parent="ButtonContainer"]
+margin_top = 37.0
+margin_right = 55.0
+margin_bottom = 62.0
+rect_min_size = Vector2( 55, 25 )
+text = "Roulette"
+clip_text = true
+
+[node name="Button4" type="Button" parent="ButtonContainer"]
+margin_left = 69.0
+margin_top = 37.0
+margin_right = 124.0
+margin_bottom = 62.0
+rect_min_size = Vector2( 55, 25 )
+text = "Tailor"
+clip_text = true
+
+[node name="Button5" type="Button" parent="ButtonContainer"]
+margin_top = 74.0
+margin_right = 55.0
+margin_bottom = 99.0
+rect_min_size = Vector2( 55, 25 )
+text = "Inventory"
+
+[node name="Button6" type="Button" parent="ButtonContainer"]
+margin_left = 69.0
+margin_top = 74.0
+margin_right = 124.0
+margin_bottom = 99.0
+rect_min_size = Vector2( 55, 25 )
+text = "Back"
+
+[node name="BackPnl2" type="Panel" parent="."]
+margin_left = 46.0
+margin_top = 14.0
+margin_right = 96.0
+margin_bottom = 23.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LocationContainer" type="CenterContainer" parent="."]
+margin_left = 10.0
+margin_top = 12.0
+margin_right = 134.0
+margin_bottom = 24.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LocationLbl" type="Label" parent="LocationContainer"]
+margin_left = 37.0
+margin_right = 86.0
+margin_bottom = 12.0
+text = "Little Italy"
+
+[node name="BackPnl" type="Panel" parent="."]
+margin_left = 46.0
+margin_top = 71.0
+margin_right = 96.0
+margin_bottom = 80.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FactionContainer" type="CenterContainer" parent="."]
+margin_left = 10.0
+margin_top = 69.0
+margin_right = 134.0
+margin_bottom = 81.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FactionLbl" type="Label" parent="FactionContainer"]
+margin_left = 36.0
+margin_right = 87.0
+margin_bottom = 12.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Cosa Nostra"
+
+[node name="InventoryPanel" parent="." instance=ExtResource( 4 )]
+visible = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/FADE5 = SubResource( 6 )
+
+[node name="ColorRect" type="ColorRect" parent="AnimationPlayer"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LittleItalyMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 8 )
+volume_db = -6.0
+autoplay = true
+[connection signal="pressed" from="ButtonContainer/Button1" to="." method="_on_Button1_pressed"]
+[connection signal="pressed" from="ButtonContainer/Button2" to="." method="_on_Button2_pressed"]
+[connection signal="pressed" from="ButtonContainer/Button3" to="." method="_on_Button3_pressed"]
+[connection signal="pressed" from="ButtonContainer/Button4" to="." method="_on_Button4_pressed"]
+[connection signal="pressed" from="ButtonContainer/Button5" to="." method="_on_Button5_pressed"]
+[connection signal="pressed" from="ButtonContainer/Button6" to="." method="_on_Button6_pressed"]

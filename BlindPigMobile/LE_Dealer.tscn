@@ -1,0 +1,265 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Wall.tscn" type="PackedScene" id=1]
+[ext_resource path="res://PanelBackground.tscn" type="PackedScene" id=2]
+[ext_resource path="res://InventoryPanel.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/gun1.png" type="Texture" id=4]
+[ext_resource path="res://LE_Dealer.gd" type="Script" id=5]
+[ext_resource path="res://Assets/gun3.png" type="Texture" id=6]
+[ext_resource path="res://StatsPanel.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Assets/gun4.png" type="Texture" id=8]
+[ext_resource path="res://Assets/gun5.png" type="Texture" id=9]
+[ext_resource path="res://Assets/gun2.png" type="Texture" id=10]
+[ext_resource path="res://Assets/gun0.png" type="Texture" id=11]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 11 ), ExtResource( 4 ), ExtResource( 10 ), ExtResource( 6 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 11 ), ExtResource( 11 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="ImageTexture" id=2]
+
+[sub_resource type="Animation" id=3]
+length = 0.6
+step = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimationPlayer/ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+
+[node name="LE_Dealer" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Wall" parent="." instance=ExtResource( 1 )]
+position = Vector2( 70.3271, 130.116 )
+
+[node name="Panel" parent="." instance=ExtResource( 2 )]
+
+[node name="StatsPanel" parent="." instance=ExtResource( 7 )]
+
+[node name="TextPanel" type="Panel" parent="."]
+margin_top = 216.0
+margin_right = 144.0
+margin_bottom = 256.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TextPanel"]
+margin_left = 1.12372
+margin_top = 0.749146
+margin_right = 131.124
+margin_bottom = 31.7491
+text = "Check out the merchandise? 
+
+Like what you see?"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BottomButtons1" type="GridContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -62.5
+margin_top = 60.5
+margin_right = 62.5
+margin_bottom = 85.5
+custom_constants/vseparation = 12
+custom_constants/hseparation = 14
+columns = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button5" type="Button" parent="BottomButtons1"]
+margin_right = 55.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 55, 25 )
+text = "Inventory"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button6" type="Button" parent="BottomButtons1"]
+margin_left = 69.0
+margin_right = 124.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 55, 25 )
+text = "Back"
+
+[node name="GraphicsPanel" type="Panel" parent="."]
+margin_left = 10.0
+margin_top = 12.0
+margin_right = 134.0
+margin_bottom = 82.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="GraphicsPanel"]
+position = Vector2( 61.9998, 34.9578 )
+frames = SubResource( 1 )
+
+[node name="ItemPanel" type="Panel" parent="GraphicsPanel"]
+margin_left = 78.0
+margin_top = 14.0
+margin_right = 120.0
+margin_bottom = 50.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemImage" type="TextureRect" parent="GraphicsPanel/ItemPanel"]
+margin_left = 7.5166
+margin_top = 6.83162
+margin_right = 35.5166
+margin_bottom = 28.8316
+rect_min_size = Vector2( 28, 22 )
+texture = SubResource( 2 )
+expand = true
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DescPanel" type="Panel" parent="GraphicsPanel"]
+margin_left = 78.0
+margin_top = 51.0
+margin_right = 120.0
+margin_bottom = 65.0
+
+[node name="EffectPanel" type="Label" parent="GraphicsPanel/DescPanel"]
+margin_left = 1.44744
+margin_top = 1.0
+margin_right = 43.4474
+margin_bottom = 13.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+margin_left = 27.0
+margin_top = 115.0
+margin_right = 122.0
+margin_bottom = 184.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemChoiceContainer" type="VBoxContainer" parent="ScrollContainer"]
+margin_right = 85.0
+margin_bottom = 84.0
+custom_constants/separation = 8
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OptionBtn1" type="Button" parent="ScrollContainer/ItemChoiceContainer"]
+margin_right = 85.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 85, 15 )
+text = "Ammo  - $3"
+
+[node name="OptionBtn4" type="Button" parent="ScrollContainer/ItemChoiceContainer"]
+margin_top = 23.0
+margin_right = 85.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 0, 15 )
+text = "Dusters - $15"
+
+[node name="OptionBtn2" type="Button" parent="ScrollContainer/ItemChoiceContainer"]
+margin_top = 46.0
+margin_right = 85.0
+margin_bottom = 61.0
+rect_min_size = Vector2( 0, 15 )
+text = "Pistol - $25"
+
+[node name="OptionBtn3" type="Button" parent="ScrollContainer/ItemChoiceContainer"]
+margin_top = 69.0
+margin_right = 85.0
+margin_bottom = 84.0
+rect_min_size = Vector2( 0, 15 )
+text = "Rifle - $50"
+
+[node name="BuyOrNo" type="HBoxContainer" parent="."]
+visible = false
+margin_left = 9.0
+margin_top = 131.0
+margin_right = 135.0
+margin_bottom = 166.0
+custom_constants/separation = 19
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BuyBtn" type="Button" parent="BuyOrNo"]
+margin_left = 17.0
+margin_right = 53.0
+margin_bottom = 35.0
+rect_min_size = Vector2( 36, 35 )
+text = "Purchase"
+
+[node name="NoBtn" type="Button" parent="BuyOrNo"]
+margin_left = 72.0
+margin_right = 108.0
+margin_bottom = 35.0
+rect_min_size = Vector2( 36, 35 )
+text = "Cancel"
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+margin_left = 9.0
+margin_top = 11.0
+margin_right = 135.0
+margin_bottom = 23.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CenterContainer"]
+margin_left = 29.0
+margin_right = 97.0
+margin_bottom = 12.0
+text = "The Arms Dealer"
+
+[node name="InventoryPanel" parent="." instance=ExtResource( 3 )]
+visible = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/FADE6 = SubResource( 3 )
+
+[node name="ColorRect" type="ColorRect" parent="AnimationPlayer"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="BottomButtons1/Button5" to="." method="_on_Button5_pressed"]
+[connection signal="pressed" from="BottomButtons1/Button6" to="." method="_on_Button6_pressed"]
+[connection signal="pressed" from="ScrollContainer/ItemChoiceContainer/OptionBtn1" to="." method="_on_OptionBtn1_pressed"]
+[connection signal="pressed" from="ScrollContainer/ItemChoiceContainer/OptionBtn4" to="." method="_on_OptionBtn4_pressed"]
+[connection signal="pressed" from="ScrollContainer/ItemChoiceContainer/OptionBtn2" to="." method="_on_OptionBtn2_pressed"]
+[connection signal="pressed" from="ScrollContainer/ItemChoiceContainer/OptionBtn3" to="." method="_on_OptionBtn3_pressed"]
+[connection signal="pressed" from="BuyOrNo/BuyBtn" to="." method="_on_BuyBtn_pressed"]
+[connection signal="pressed" from="BuyOrNo/NoBtn" to="." method="_on_NoBtn_pressed"]

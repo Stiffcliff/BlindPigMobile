@@ -1,0 +1,26 @@
+[gd_scene format=2]
+
+[node name="Button" type="Button"]
+margin_left = 50.3359
+margin_top = 104.235
+margin_right = 92.3359
+margin_bottom = 141.235
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -19.5
+margin_top = -9.5
+margin_right = 19.5
+margin_bottom = 9.5
+text = "Increase
+Wager"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

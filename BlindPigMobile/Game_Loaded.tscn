@@ -1,0 +1,103 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Game_Loaded.gd" type="Script" id=1]
+[ext_resource path="res://FADE1.tres" type="Animation" id=2]
+[ext_resource path="res://FadeAnimation2.tres" type="Animation" id=3]
+[ext_resource path="res://FADE4.tres" type="Animation" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "FADE2"
+length = 0.6
+step = 0.6
+
+[node name="Game_Loaded" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoadedPanel" type="Panel" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -58.0
+margin_top = -44.0
+margin_right = 58.0
+margin_bottom = 44.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LoadedPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 9.0
+margin_bottom = -6.0
+custom_constants/separation = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FoundLabel" type="Label" parent="LoadedPanel/VBoxContainer"]
+margin_right = 116.0
+margin_bottom = 12.0
+text = "Save game found:"
+align = 1
+
+[node name="DateLabel" type="Label" parent="LoadedPanel/VBoxContainer"]
+margin_top = 18.0
+margin_right = 116.0
+margin_bottom = 30.0
+text = "Date - "
+align = 1
+
+[node name="RankLabel" type="Label" parent="LoadedPanel/VBoxContainer"]
+margin_top = 36.0
+margin_right = 116.0
+margin_bottom = 48.0
+text = "Rank -"
+align = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="LoadedPanel/VBoxContainer"]
+margin_top = 54.0
+margin_right = 116.0
+margin_bottom = 69.0
+rect_min_size = Vector2( 0, 15 )
+custom_constants/separation = 10
+alignment = 1
+
+[node name="LoadBtn" type="Button" parent="LoadedPanel/VBoxContainer/HBoxContainer"]
+margin_left = 3.0
+margin_right = 53.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 50, 15 )
+text = "Load"
+
+[node name="BackBtn" type="Button" parent="LoadedPanel/VBoxContainer/HBoxContainer"]
+margin_left = 63.0
+margin_right = 113.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 50, 0 )
+text = "Cancel"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/FADE1 = ExtResource( 2 )
+anims/FADE2 = SubResource( 1 )
+anims/FADE4 = ExtResource( 4 )
+anims/FadeAnimation = ExtResource( 3 )
+
+[node name="ColorRect" type="ColorRect" parent="AnimationPlayer"]
+modulate = Color( 0, 0, 0, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="LoadedPanel/VBoxContainer/HBoxContainer/LoadBtn" to="." method="_on_LoadBtn_pressed"]
+[connection signal="pressed" from="LoadedPanel/VBoxContainer/HBoxContainer/BackBtn" to="." method="_on_BackBtn_pressed"]

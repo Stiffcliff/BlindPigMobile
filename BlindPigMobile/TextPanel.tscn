@@ -1,0 +1,24 @@
+[gd_scene format=2]
+
+[node name="TextPanel" type="Panel"]
+margin_top = 216.0
+margin_right = 144.0
+margin_bottom = 256.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 0.943878
+margin_top = -1.16838
+margin_right = 133.944
+margin_bottom = 42.8316
+custom_constants/line_spacing = 3
+text = "Select one of the 4 Boroughs to
+visit.
+
+Each gang operates from a
+different region."
+__meta__ = {
+"_edit_use_anchors_": false
+}

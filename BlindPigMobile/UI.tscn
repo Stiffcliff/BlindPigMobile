@@ -1,0 +1,129 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://UI.gd" type="Script" id=1]
+
+[node name="UI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextPanel" type="Panel" parent="."]
+margin_top = 216.0
+margin_right = 144.0
+margin_bottom = 256.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StatsPanel" type="Panel" parent="."]
+margin_top = 83.0
+margin_right = 144.0
+margin_bottom = 112.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StatsContainer" type="HBoxContainer" parent="StatsPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 2.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Health" type="Label" parent="StatsPanel/StatsContainer"]
+margin_top = 6.0
+margin_right = 18.0
+margin_bottom = 25.0
+text = "HP
+25"
+
+[node name="Ammo" type="Label" parent="StatsPanel/StatsContainer"]
+margin_left = 22.0
+margin_top = 6.0
+margin_right = 50.0
+margin_bottom = 25.0
+text = "Ammo
+5"
+
+[node name="Rep" type="Label" parent="StatsPanel/StatsContainer"]
+margin_left = 54.0
+margin_top = 6.0
+margin_right = 74.0
+margin_bottom = 25.0
+text = "Rep
+0"
+
+[node name="Money" type="Label" parent="StatsPanel/StatsContainer"]
+margin_left = 78.0
+margin_top = 6.0
+margin_right = 108.0
+margin_bottom = 25.0
+text = "Money
+$0"
+
+[node name="ButtonContainer" type="GridContainer" parent="."]
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 10.0
+margin_top = 114.0
+margin_right = 64.0
+margin_bottom = 85.0
+custom_constants/vseparation = 12
+custom_constants/hseparation = 15
+columns = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button1" type="Button" parent="ButtonContainer"]
+margin_right = 55.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 55, 25 )
+text = "def"
+
+[node name="Button2" type="Button" parent="ButtonContainer"]
+margin_left = 70.0
+margin_right = 125.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 55, 25 )
+text = "def"
+
+[node name="Button3" type="Button" parent="ButtonContainer"]
+margin_top = 37.0
+margin_right = 55.0
+margin_bottom = 62.0
+rect_min_size = Vector2( 55, 25 )
+text = "def"
+
+[node name="Button4" type="Button" parent="ButtonContainer"]
+margin_left = 70.0
+margin_top = 37.0
+margin_right = 125.0
+margin_bottom = 62.0
+rect_min_size = Vector2( 55, 25 )
+text = "def"
+
+[node name="Button5" type="Button" parent="ButtonContainer"]
+margin_top = 74.0
+margin_right = 55.0
+margin_bottom = 99.0
+rect_min_size = Vector2( 55, 25 )
+text = "def"
+
+[node name="Button6" type="Button" parent="ButtonContainer"]
+margin_left = 70.0
+margin_top = 74.0
+margin_right = 125.0
+margin_bottom = 99.0
+rect_min_size = Vector2( 55, 25 )
+text = "def"
+[connection signal="pressed" from="ButtonContainer/Button1" to="." method="_on_Button1_pressed"]
+[connection signal="pressed" from="ButtonContainer/Button2" to="." method="_on_Button2_pressed"]
+[connection signal="pressed" from="ButtonContainer/Button3" to="." method="_on_Button3_pressed"]
+[connection signal="pressed" from="ButtonContainer/Button4" to="." method="_on_Button4_pressed"]
+[connection signal="pressed" from="ButtonContainer/Button5" to="." method="_on_Button5_pressed"]
+[connection signal="pressed" from="ButtonContainer/Button6" to="." method="_on_Button6_pressed"]
